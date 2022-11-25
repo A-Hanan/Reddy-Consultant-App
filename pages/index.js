@@ -4,6 +4,7 @@ import Navbar from "../components/home/Navbar";
 import HeroContainer from "../components/home/HeroContainer";
 import TrendingCategories from "../components/home/TrendingCategories";
 import TopRatedExperts from "../components/home/TopRatedExperts";
+import LookingForMore from "../components/home/LookingForMore";
 
 const home = () => {
   return (
@@ -13,6 +14,7 @@ const home = () => {
         <HeroContainer />
         <TrendingCategories />
         <TopRatedExperts />
+        <LookingForMore />
       </div>
     </div>
   );

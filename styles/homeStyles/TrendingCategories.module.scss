@@ -12,7 +12,7 @@
   button {
     @include buttonProps;
     @include placeitCenter;
-    margin-top: 30px;
+    margin-top: 50px;
     &:hover {
       color: gray;
     }
@@ -32,8 +32,9 @@
 
   div {
     @include flexColumnAndCenter;
-    flex: 0.2;
-    width: 200px;
+    justify-content: flex-start;
+    flex: 0.4;
+    width: 330px;
     gap: 10px;
     span {
       background-color: $logosBackgroundColor;

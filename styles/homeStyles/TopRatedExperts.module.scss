@@ -4,11 +4,14 @@
 .top__rated__experts__wrapper {
   background-color: $creamColor;
   width: 100%;
-  min-height: 500px;
-  margin: 30px 0 30px 0;
-  padding: 40px 70px;
+  // min-height: 500px;
+  height: max-content;
+  margin: 30px 0 0px 0;
+  padding: 60px 70px;
+  padding-bottom: 80px;
   header {
     display: flex;
+    margin-left: 30px;
     flex-direction: column;
     gap: 5px;
     h1 {
@@ -26,7 +29,7 @@
 }
 .expert__boxes__wrapper {
   display: flex;
-  margin-top: 90px;
+  margin-top: 40px;
   gap: 30px;
 }
 .ExpertBox {
@@ -35,6 +38,7 @@
   width: 280px;
   position: relative;
   padding-top: 60px;
+  margin-top: 30px;
   border-radius: 4px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   h1,

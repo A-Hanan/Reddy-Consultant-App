@@ -16,14 +16,22 @@
 .image__one {
   position: absolute;
   z-index: -1;
-  left: 5%;
+  left: 2%;
   max-width: 25vw !important;
 }
 
 .image__two {
   position: absolute;
   z-index: -1;
-  right: 5%;
+  right: 2%;
+  max-width: 25vw !important;
+}
+
+.image__three {
+  position: absolute;
+  z-index: -1;
+  margin-left: 50%;
+  transform: translateX(-50%);
   max-width: 25vw !important;
 }
 
@@ -38,20 +46,20 @@
   gap: 30px;
 }
 .dark__layer h1 {
-  margin-top: 20px;
-  font-weight: 500;
+  margin-top: 0px;
+  font-weight: 400;
   color: #fff;
   font-family: "Open Sans", sans-serif;
   text-align: center;
   width: 100%;
-  font-size: 2.4rem;
+  font-size: 2.6rem;
 }
 .dark__layer h1 span {
   color: #ff9e15;
 }
 .dark__layer h3 {
   color: #46484b;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-weight: 500;

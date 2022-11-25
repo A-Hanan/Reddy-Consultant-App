@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import styles from "../../styles/homeStyles/HeroSection.module.css";
 import Image from "next/image";
 import imageOne from "../../utils/images/vector2.png";
-import imageTwo from "../../utils/images/vector1.jpg";
+import imageTwo from "../../utils/images/vector 5.jpg";
+import imageThree from "../../utils/images/vector1.jpg";
 
 const HeroContainer = () => {
   const [subheaderText, setSubheaderText] = useState(
@@ -41,7 +42,15 @@ const HeroContainer = () => {
         </div>
         <h3>{subheaderText}</h3>
       </div>
-      <div className={styles.image__one}>
+      <div className={styles.image__two}>
+        <Image
+          src={imageTwo}
+          alt="Picture of the author"
+          width="100%"
+          height={300}
+        />
+      </div>
+      <div className={styles.image__three}>
         <Image
           src={imageOne}
           alt="Picture of the author"
@@ -49,9 +58,9 @@ const HeroContainer = () => {
           height={300}
         />
       </div>
-      <div className={styles.image__two}>
+      <div className={styles.image__one}>
         <Image
-          src={imageTwo}
+          src={imageThree}
           alt="Picture of the author"
           width="100%"
           height={300}

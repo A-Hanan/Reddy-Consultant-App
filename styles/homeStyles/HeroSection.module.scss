@@ -14,13 +14,19 @@
 .image__one {
   position: absolute;
   z-index: -1;
-  left: 5%;
+  left: 2%;
   max-width: 25vw !important;
 }
 .image__two {
   position: absolute;
   z-index: -1;
-  right: 5%;
+  right: 2%;
+  max-width: 25vw !important;
+}
+.image__three {
+  position: absolute;
+  z-index: -1;
+  @include placeitCenter;
   max-width: 25vw !important;
 }
 .dark__layer {
@@ -30,19 +36,19 @@
   @include flexColumnAndCenter;
   gap: 30px;
   h1 {
-    margin-top: 20px;
-    font-weight: 500;
+    margin-top: 0px;
+    font-weight: 400;
     color: #fff;
     font-family: $primaryFont;
     text-align: center;
     width: 100%;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     span {
       color: $yellowishColor;
     }
   }
   h3 {
-    @include paraTypography(1.2rem);
+    @include paraTypography(1.4rem);
     font-weight: 500;
     background: rgba(43, 47, 136, 0.7);
     display: inline-block;
