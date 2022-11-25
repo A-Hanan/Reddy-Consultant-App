@@ -1,0 +1,45 @@
+@import "../mixin";
+@import "../var";
+//operators
+//variables
+//nesting
+
+/* navbar css */
+.nav__wrapper {
+  @include container;
+  padding: 16px 20px;
+  @include rowFlexAndSpaceBetween;
+  position: fixed;
+  z-index: 1;
+  background-color: white;
+}
+.nav__logo__text {
+  @include headingTypography(1.4rem);
+  font-weight: 700;
+}
+.yellowText {
+  color: $yellowishColor;
+}
+.blueText {
+  color: $darkBlueColor;
+}
+.nav__buttons__wrapper {
+  width: max-content;
+  @include rowFlexAndSpaceBetween;
+  justify-content: right;
+  gap: 20px;
+  margin-right: 6px;
+}
+.buttonOne {
+  @include buttonProps;
+  &:hover {
+    color: gray;
+  }
+}
+.buttonTwo {
+  @include buttonProps;
+  border-color: $yellowishColor;
+  color: $yellowishColor;
+}
+
+/***** hero section css****/

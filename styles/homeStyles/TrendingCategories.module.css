@@ -1,0 +1,82 @@
+.tc__conatainer {
+  width: 100%;
+  padding: 20px;
+  margin-top: 30px;
+}
+.tc__conatainer h1 {
+  font-size: 1.5rem;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-weight: 500;
+  text-align: center;
+}
+.tc__conatainer button {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #46484b;
+  border: 1px solid lightgray;
+  padding: 9px 10px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  background-color: transparent;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+}
+.tc__conatainer button:hover {
+  color: gray;
+}
+
+.categoriesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 50px;
+}
+.categoriesGrid div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 0.2;
+  width: 200px;
+  gap: 10px;
+}
+.categoriesGrid div span {
+  background-color: #333385;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50%;
+}
+.categoriesGrid div span svg {
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 10px;
+}
+.categoriesGrid div span:hover {
+  cursor: pointer;
+}
+.categoriesGrid div p {
+  text-align: center;
+  color: #46484b;
+  font-size: 0.9rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #3c3c3c;
+  font-weight: 500;
+}/*# sourceMappingURL=TrendingCategories.module.css.map */
