@@ -42,7 +42,7 @@ const HeroContainer = () => {
       <div className={styles.image__two}>
         <Image
           src="/images/vector 5.jpg"
-          alt="Picture of the author"
+          alt="vector"
           width={300}
           height={320}
         />
@@ -50,7 +50,7 @@ const HeroContainer = () => {
       <div className={styles.image__three}>
         <Image
           src="/images/vector2.png"
-          alt="Picture of the author"
+          alt="vector"
           width={400}
           height={300}
         />
@@ -58,7 +58,7 @@ const HeroContainer = () => {
       <div className={styles.image__one}>
         <Image
           src="/images/vector1.jpg"
-          alt="Picture of the author"
+          alt="vector"
           width={300}
           height={300}
         />

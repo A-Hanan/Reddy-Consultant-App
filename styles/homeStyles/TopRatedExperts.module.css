@@ -19,8 +19,9 @@
   color: #000;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
-  font-weight: 400;
-  line-height: 27px;
+  font-weight: 400 !important;
+  font-size: 1.4rem !important;
+  line-height: 27px !important;
 }
 .top__rated__experts__wrapper header p {
   color: #46484b;
