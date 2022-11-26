@@ -13,7 +13,7 @@ import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 import { faPerson } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import PhoneScreen from "../../utils/images/PhoneScreen.jpg";
+
 import Link from "next/link";
 
 const TrendingCategories = () => {

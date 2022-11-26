@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/homeStyles/HeroSection.module.css";
 import Image from "next/image";
-import imageOne from "../../utils/images/vector2.png";
-import imageTwo from "../../utils/images/vector 5.jpg";
-import imageThree from "../../utils/images/vector1.jpg";
 
 const HeroContainer = () => {
   const [subheaderText, setSubheaderText] = useState(
