@@ -7,13 +7,13 @@ const ExpertBox = () => {
   return (
     <div className={styles.ExpertBox}>
       <div className={styles.image__box}>
-        <Image
+        {/* <Image
           className={styles.image__of__expert}
           src="/images/manface.jpg"
           alt="face"
           width={150}
           height={150}
-        />
+        /> */}
       </div>
       <h1>Mr. Ranchodas Chanchad</h1>
       <p>x years experience</p>
