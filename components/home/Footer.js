@@ -32,13 +32,13 @@ const Footer = () => {
           <p>About Us</p>
         </div>
         <div>
-          {" "}
+         
           <p>Privacy Policy</p>
           <p>Terms of Use</p>
           <p>FAQs</p>
         </div>
         <div>
-          {" "}
+        
           {/* <span>
             <FontAwesomeIcon icon={faFacebookF} />
           </span>
@@ -48,9 +48,9 @@ const Footer = () => {
           <span>
             <FontAwesomeIcon icon={faTwitter} />
           </span> */}
-          <p className={styles.last__para}>
+          {/* <p className={styles.last__para}>
             Copyright @ 2022 <span>Reddy Nithin</span> -All rights reserved
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

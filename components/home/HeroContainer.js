@@ -44,25 +44,25 @@ const HeroContainer = () => {
       </div>
       <div className={styles.image__two}>
         <Image
-          src={imageTwo}
+          src="/images/vector 5.jpg"
           alt="Picture of the author"
-          width="100%"
-          height={300}
+          width={300}
+          height={320}
         />
       </div>
       <div className={styles.image__three}>
         <Image
-          src={imageOne}
+          src="/images/vector2.png"
           alt="Picture of the author"
-          width="100%"
+          width={400}
           height={300}
         />
       </div>
       <div className={styles.image__one}>
         <Image
-          src={imageThree}
+          src="/images/vector1.jpg"
           alt="Picture of the author"
-          width="100%"
+          width={300}
           height={300}
         />
       </div>

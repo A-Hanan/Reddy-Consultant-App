@@ -1,18 +1,17 @@
 import React from "react";
 import styles from "../../styles/homeStyles/TopRatedExperts.module.css";
 import Image from "next/image";
-import manFace from "../../utils/images/manface.jpg";
 
 const ExpertBox = () => {
-  console.log("image", manFace);
+  // console.log("image", manFace);
   return (
     <div className={styles.ExpertBox}>
       <div className={styles.image__box}>
         <Image
           className={styles.image__of__expert}
-          src={manFace}
+          src="/images/manface.jpg"
           alt="face"
-          width="auto"
+          width={150}
           height={150}
         />
       </div>
