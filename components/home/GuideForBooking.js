@@ -13,12 +13,13 @@ const GuideForBooking = () => {
       <h1>Book Appointment in 3 easy steps</h1>
       <div className={styles.guide__container}>
         <div className={styles.phone__wrapper}>
-          <Image
+          {/* <Image
             src="/images/PhoneScreen.jpg"
             alt="Picture of the author"
             width={310}
             height={400}
-          />
+          /> */}
+          <div></div>
         </div>
         <div className={styles.guidelines__container}>
           <div>
