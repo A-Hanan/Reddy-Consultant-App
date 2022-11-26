@@ -28,7 +28,7 @@
 .phone__wrapper > div {
   width: 300px;
   height: 500px;
-  background: url("/images/PhoneScreen.jpg");
+  background: url("/images/phoneScreen.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: fixed;
