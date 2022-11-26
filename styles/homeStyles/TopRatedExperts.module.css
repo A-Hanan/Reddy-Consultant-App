@@ -70,6 +70,10 @@
   font-weight: 500;
   color: #46484b;
 }
+.ExpertBox:hover {
+  box-shadow: rgba(99, 99, 99, 0.5) 0px 2px 8px 0px;
+  cursor: pointer;
+}
 
 .footer__of__expert__box {
   position: absolute;

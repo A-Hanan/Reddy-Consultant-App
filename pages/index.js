@@ -5,6 +5,8 @@ import HeroContainer from "../components/home/HeroContainer";
 import TrendingCategories from "../components/home/TrendingCategories";
 import TopRatedExperts from "../components/home/TopRatedExperts";
 import LookingForMore from "../components/home/LookingForMore";
+import GuideForBooking from "../components/home/GuideForBooking";
+import Footer from "../components/home/Footer";
 
 const home = () => {
   return (
@@ -15,6 +17,8 @@ const home = () => {
         <TrendingCategories />
         <TopRatedExperts />
         <LookingForMore />
+        <GuideForBooking />
+        <Footer />
       </div>
     </div>
   );

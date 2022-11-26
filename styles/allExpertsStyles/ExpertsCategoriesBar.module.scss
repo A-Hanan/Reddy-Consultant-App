@@ -1,0 +1,53 @@
+@import "../mixin";
+@import "../var";
+.category__bar__wrapper {
+  width: 100%;
+  min-height: 90vh;
+  position: fixed;
+  // flex: 0.2;
+  width: 280px !important;
+  @include container;
+  padding-right: 0;
+  //   border-right: 1px solid lightcyan;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  h4 {
+    margin-top: 30px;
+    @include headingTypography(0.9rem);
+    font-weight: 700;
+    color: $grayishBlack;
+    margin-bottom: 6px;
+  }
+}
+.category__menu {
+  p {
+    @include paraTypography(0.9rem);
+    font-weight: 500;
+    color: $grayishBlack;
+  }
+
+  padding: 9px 10px;
+  &:hover {
+    color: $darkBlueColor;
+
+    cursor: pointer;
+    background-color: #0015ff2e;
+    color: #fff;
+    border-radius: 4px;
+  }
+}
+.category__menu__active {
+  p {
+    @include paraTypography(0.9rem);
+    font-weight: 600;
+    color: $darkBlueColor;
+  }
+  color: $darkBlueColor;
+  cursor: pointer;
+  background-color: #0015ff2e;
+  color: #fff;
+  border-radius: 4px;
+  padding: 9px 10px;
+  border-right: 2px solid $darkBlueColor;
+}

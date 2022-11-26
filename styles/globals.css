@@ -11,4 +11,14 @@
 
 .Carousel__Container-sc-hyhecw-0.fPimMH {
   width: 100% !important;
+}
+
+/**********/
+.all__experts__page {
+  padding-top: 70px;
+}
+
+.all__experts__page > .wrapper {
+  display: flex;
+  margin-top: 2px;
 }/*# sourceMappingURL=globals.css.map */
