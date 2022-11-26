@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../../styles/homeStyles/GuideForBooking.module.css";
 import Image from "next/image";
-import PhoneScreen from "../../utils/images/PhoneScreen.jpg";
+// import PhoneScreen from "../../utils/images/PhoneScreen.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -14,10 +14,10 @@ const GuideForBooking = () => {
       <div className={styles.guide__container}>
         <div className={styles.phone__wrapper}>
           <Image
-            src={PhoneScreen}
+            src="/images/PhoneScreen.jpg"
             alt="Picture of the author"
-            width="100%"
-            height={430}
+            width={300}
+            height={400}
           />
         </div>
         <div className={styles.guidelines__container}>
