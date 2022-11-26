@@ -9,7 +9,7 @@
   background-color: whitesmoke;
   margin-left: 280px;
 }
-.experts__container h1 {
+.experts__container > h1 {
   font-size: 1.6rem;
   color: #000;
   font-family: "Open Sans", sans-serif;

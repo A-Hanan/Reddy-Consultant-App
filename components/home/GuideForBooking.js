@@ -16,7 +16,7 @@ const GuideForBooking = () => {
           <Image
             src="/images/PhoneScreen.jpg"
             alt="Picture of the author"
-            width={300}
+            width={310}
             height={400}
           />
         </div>

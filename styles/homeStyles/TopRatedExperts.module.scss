@@ -16,9 +16,6 @@
     gap: 5px;
     h1 {
       @include headingTypography(1.4rem);
-      font-weight: 400 !important;
-      font-size: 1.4rem !important;
-      line-height: 27px !important;
     }
     p {
       @include paraTypography(0.875rem);

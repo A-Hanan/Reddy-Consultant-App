@@ -6,7 +6,7 @@
   @include container;
   background-color: whitesmoke;
   margin-left: 280px;
-  h1 {
+  > h1 {
     @include headingTypography(1.6rem);
     font-weight: 400;
     margin-bottom: 30px;
