@@ -52,3 +52,10 @@
   margin-left: 50%;
   transform: translateX(-50%);
 }
+@mixin textInputFieldProps {
+  border: none;
+  background-color: whitesmoke;
+  font-size: 0.9rem;
+  padding: 9px 5px;
+  border-radius: 4px;
+}

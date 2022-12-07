@@ -1,5 +1,6 @@
 @import "../mixin";
 @import "../var";
+@import "../breakpoints.scss";
 .footer__wrapper {
   background-color: #222;
   width: 100%;
@@ -23,10 +24,17 @@
     @include paraTypography(0.8rem);
     color: #fff;
   }
+  @include media("<=tablet") {
+    grid-template-columns: 50% 50%;
+  }
+  @include media("<=570px") {
+    grid-template-columns: 100%;
+    padding-left: 40px;
+  }
 }
 .option__columns {
   display: grid;
-  grid-template-columns: 25% 25% 50%;
+  grid-template-columns: 40% 40% 10%;
   padding-top: 20px;
   div {
     display: flex;
@@ -36,6 +44,8 @@
       @include paraTypography(1rem);
       color: #fff;
     }
+  }
+  @include media("<=tablet") {
   }
 }
 .last__para {

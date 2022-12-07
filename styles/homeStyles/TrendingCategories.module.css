@@ -1,3 +1,8 @@
+/**
+*
+* Testing
+*
+**/
 .user__options__wrapper {
   height: 200px;
   width: 100%;
@@ -103,6 +108,7 @@
 .tc__conatainer {
   width: 100%;
   padding: 20px;
+  background-color: whitesmoke;
   margin-top: 6px;
 }
 .tc__conatainer h1 {
@@ -147,20 +153,34 @@
   justify-content: center;
   padding-top: 50px;
 }
+@media (max-width: 922px) {
+  .categoriesGrid {
+    width: 100vw;
+  }
+}
+@media (max-width: 415px) {
+  .categoriesGrid {
+    flex-direction: column;
+  }
+}
 .categoriesGrid div {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  flex: 0.4;
-  width: 330px;
+  flex: 0.18;
   gap: 10px;
+}
+@media (max-width: 922px) {
+  .categoriesGrid div {
+    flex: 0.22;
+  }
 }
 .categoriesGrid div span {
   background-color: #333385;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,7 +188,7 @@
   border-radius: 50%;
 }
 .categoriesGrid div span svg {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: #fff;
   padding: 10px;
 }
@@ -178,7 +198,7 @@
 .categoriesGrid div p {
   text-align: center;
   color: #46484b;
-  font-size: 0.9rem;
+  font-size: 0.97rem;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   color: #3c3c3c;

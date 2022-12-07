@@ -17,24 +17,24 @@ const ExpertsCategoriesBar = () => {
       </div>
       <h4>Categories</h4>
       <div
-        onClick={() => setActiveCategory("category2")}
+        onClick={() => setActiveCategory("Consulting")}
         className={
-          activeCategory == "category2"
+          activeCategory == "Consulting"
             ? styles.category__menu__active
             : styles.category__menu
         }
       >
-        <p>Health & fitness</p>
+        <p>Consulting</p>
       </div>
       <div
-        onClick={() => setActiveCategory("category3")}
+        onClick={() => setActiveCategory("VisaAndGreenCard")}
         className={
-          activeCategory == "category3"
+          activeCategory == "VisaAndGreenCard"
             ? styles.category__menu__active
             : styles.category__menu
         }
       >
-        <p>Law & Order</p>
+        <p>VisaAndGreenCardr</p>
       </div>
       <div
         onClick={() => setActiveCategory("category4")}

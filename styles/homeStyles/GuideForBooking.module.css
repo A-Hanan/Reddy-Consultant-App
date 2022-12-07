@@ -1,3 +1,8 @@
+/**
+*
+* Testing
+*
+**/
 .guide__wrapper {
   margin-top: 40px;
   width: 100%;
@@ -19,11 +24,21 @@
   min-height: 300px;
   padding: 30px 10px;
 }
+@media (max-width: 570px) {
+  .guide__container {
+    flex-direction: column;
+  }
+}
 
 .phone__wrapper {
   flex: 0.5;
   display: flex;
   justify-content: right;
+}
+@media (max-width: 570px) {
+  .phone__wrapper {
+    justify-content: center;
+  }
 }
 .phone__wrapper > div {
   width: 300px;

@@ -1,3 +1,8 @@
+/**
+*
+* Testing
+*
+**/
 .footer__wrapper {
   background-color: #222;
   width: 100%;
@@ -29,10 +34,21 @@
   font-weight: 300;
   color: #fff;
 }
+@media (max-width: 768px) {
+  .footer__wrapper {
+    grid-template-columns: 50% 50%;
+  }
+}
+@media (max-width: 570px) {
+  .footer__wrapper {
+    grid-template-columns: 100%;
+    padding-left: 40px;
+  }
+}
 
 .option__columns {
   display: grid;
-  grid-template-columns: 25% 25% 50%;
+  grid-template-columns: 40% 40% 10%;
   padding-top: 20px;
 }
 .option__columns div {
@@ -47,7 +63,6 @@
   font-weight: 300;
   color: #fff;
 }
-
 .last__para {
   text-align: center;
   color: #fff;

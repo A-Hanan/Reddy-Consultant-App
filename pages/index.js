@@ -7,6 +7,7 @@ import TopRatedExperts from "../components/home/TopRatedExperts";
 import LookingForMore from "../components/home/LookingForMore";
 import GuideForBooking from "../components/home/GuideForBooking";
 import Footer from "../components/home/Footer";
+import Testimonial from "../components/home/Testimonial";
 
 const home = () => {
   return (
@@ -14,10 +15,12 @@ const home = () => {
       <Navbar />
       <div className="home__page">
         <HeroContainer />
+        <Testimonial />
         <TrendingCategories />
-        <TopRatedExperts />
-        <LookingForMore />
+        {/* <TopRatedExperts /> */}
+
         <GuideForBooking />
+        <LookingForMore />
         <Footer />
       </div>
     </div>

@@ -1,5 +1,6 @@
 @import "../mixin";
 @import "../var";
+@import "../breakpoints.scss";
 .user__options__wrapper {
   height: 200px;
   width: 100%;
@@ -11,6 +12,7 @@
   > div {
     height: 80%;
     width: 350px;
+
     border: 1px solid lightgray;
     border-radius: 4px;
     display: grid;
@@ -77,7 +79,9 @@
 }
 .tc__conatainer {
   @include container;
+  background-color: whitesmoke;
   margin-top: 6px;
+
   h1 {
     margin-top: 30px;
     @include headingTypography(1.5rem);
@@ -104,21 +108,30 @@
   gap: 20px;
   justify-content: center;
   padding-top: 50px;
+  @include media("<=922px") {
+    width: 100vw;
+  }
+  @include media("<=phone") {
+    flex-direction: column;
+  }
 
   div {
     @include flexColumnAndCenter;
     justify-content: flex-start;
-    flex: 0.4;
-    width: 330px;
+    flex: 0.18;
+    @include media("<=922px") {
+      flex: 0.22;
+    }
+    // width: 330px;
     gap: 10px;
     span {
       background-color: $logosBackgroundColor;
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       @include flexColumnAndCenter;
       border-radius: 50%;
       svg {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         color: #fff;
         padding: 10px;
       }
@@ -129,7 +142,7 @@
     }
     p {
       text-align: center;
-      @include paraTypography(0.9rem);
+      @include paraTypography(0.97rem);
       color: $grayishBlack;
       font-weight: 500;
     }
