@@ -7,6 +7,8 @@ import "react-datepicker/dist/react-datepicker.css";
 // import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { bookAppointmentAction } from "../../Actions/bookAppointmentAction";
 import { useStateValue } from "../../StateProvider";
+import { useRouter } from "next/router";
+import styles from "../../styles/allExpertsStyles/BookAppointment.module.css";
 
 // import ReactTimeslotCalendar from "react-timeslot-calendar-k";
 // import moment from "moment";
@@ -47,9 +49,10 @@ const simpleToMinutes = (time) => {
   return totalMinutes;
 };
 
-const BookApptimeSlots = ({ lawyer }) => {
+const BookApptimeSlots = ({ expert }) => {
   // const userstate = useSelector((state) => state.loginUserReducer);
   // const { currentUser } = userstate;
+
   const [{ user }, dispatch] = useStateValue();
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => setCurrentUser(user), [user]);
@@ -75,38 +78,69 @@ const BookApptimeSlots = ({ lawyer }) => {
     "03:30 PM",
     "04:00 PM",
     "04:30 PM",
-    "05:00 PM",
-    "05:30 PM",
-    "06:00 PM",
-    "06:30 PM",
-    "07:00 PM",
-    "07:30 PM",
-    "08:00 PM",
-    "08:30 PM",
-    "09:00 PM",
+    // "05:00 PM",
+    // "05:30 PM",
+    // "06:00 PM",
+    // "06:30 PM",
+    // "07:00 PM",
+    // "07:30 PM",
+    // "08:00 PM",
+    // "08:30 PM",
+    // "09:00 PM",
   ]);
+  useEffect(() => {
+    console.log("date", date);
+  }, [date]);
 
+  useEffect(() => {
+    console.log("expert", expert);
+    console.log("user", user);
+  }, [user, expert]);
   useEffect(() => {
     // console.log("date>", date);
     setDisabledSlots([...slots]);
     let date1 = date;
     let date2 = new Date();
     date1.setHours(0, 0, 0, 0);
+    console.log("date after changing", date1);
     date2.setHours(0, 0, 0, 0);
-    // console.log("date1 and date2>", date1, date2);
+    console.log("date1 and date2>", date1, date2, date1 < date2);
     if (date1 < date2) {
+      console.log("disabled slots", disabledSlots);
       //remains same
     } else if (date1 > date2) {
+      console.log("sjjjjjjjjjjjjjjjj");
       setDisabledSlots([]);
       let temp = [];
 
       const body = {
-        lawyerId: lawyer?._id,
+        expertId: expert?._id,
         status: "Confirmed",
         date: date1,
       };
+      let a = 0;
+      let b = 0;
+      if (expert?.startAvailabilityTime && expert?.endAvailabilityTime) {
+        a = simpleToMinutes(expert?.startAvailabilityTime);
+        b = simpleToMinutes(expert?.endAvailabilityTime);
+      }
+      let temp22 = [];
+      slots.forEach((slot) => {
+        let exa = ampmToMinutesConverter(slot);
+
+        // console.log("example >>>>", exa, a, b);
+        if (exa < a || exa > b) {
+          temp22.push(slot);
+        } else {
+          temp22.push("");
+        }
+      });
+      console.log("disabled slots", temp22);
+      setDisabledSlots(temp22);
+
       api.post("/appointment/specificAppointments", body).then((res) => {
-        console.log("lawyer all appointments>", res.data);
+        console.log("expert all appointments>", res.data);
+        let disabledSlotsPro = [];
         if (res.data[0]) {
           // console.log("appointments>>>", res.data);
 
@@ -123,36 +157,48 @@ const BookApptimeSlots = ({ lawyer }) => {
               temp.push("");
             }
           });
-          setDisabledSlots(temp);
-        } else {
-          // handleSubmit("ok");
-          let a = 0;
-          let b = 0;
-          if (lawyer?.startAvailabilityTime && lawyer?.endAvailabilityTime) {
-            a = simpleToMinutes(lawyer?.startAvailabilityTime);
-            b = simpleToMinutes(lawyer?.endAvailabilityTime);
-          }
-          let temp22 = [];
-          slots.forEach((slot) => {
-            let exa = ampmToMinutesConverter(slot);
-
-            console.log("example >>>>", exa, a, b);
-            if (exa < a || exa > b) {
-              temp22.push(slot);
+          console.log("disabledSlots", temp);
+          /*** cobining diability fro both accordig to doctor availability time
+           * + doctor already fixed appointment
+           */
+          let temp33 = [];
+          slots.forEach((s, i) => {
+            if (temp22[i] !== "" || temp[i] !== "") {
+              temp33.push(s);
             } else {
-              temp22.push("");
+              temp33.push("");
             }
           });
-          setDisabledSlots(temp22);
+          setDisabledSlots(temp33);
         }
+        // else {
+        // handleSubmit("ok");
+        // let a = 0;
+        // let b = 0;
+        // if (expert?.startAvailabilityTime && expert?.endAvailabilityTime) {
+        //   a = simpleToMinutes(expert?.startAvailabilityTime);
+        //   b = simpleToMinutes(expert?.endAvailabilityTime);
+        // }
+        // let temp22 = [];
+        // slots.forEach((slot) => {
+        //   let exa = ampmToMinutesConverter(slot);
+        //   // console.log("example >>>>", exa, a, b);
+        //   if (exa < a || exa > b) {
+        //     temp22.push(slot);
+        //   } else {
+        //     temp22.push("");
+        //   }
+        // });
+        // setDisabledSlots(temp22);
+        // }
       });
-    } else if (new Date().getHours() <= 21) {
+    } else if (new Date().getHours() <= 15) {
       let temp = [];
       let a = 0;
       let b = 0;
-      if (lawyer?.startAvailabilityTime && lawyer?.endAvailabilityTime) {
-        a = simpleToMinutes(lawyer?.startAvailabilityTime);
-        b = simpleToMinutes(lawyer?.endAvailabilityTime);
+      if (expert?.startAvailabilityTime && expert?.endAvailabilityTime) {
+        a = simpleToMinutes(expert?.startAvailabilityTime);
+        b = simpleToMinutes(expert?.endAvailabilityTime);
       }
       slots.forEach((slot) => {
         let m1 =
@@ -172,6 +218,9 @@ const BookApptimeSlots = ({ lawyer }) => {
       setDisabledSlots(temp);
     }
   }, [date]);
+  useEffect(() => {
+    console.log("disabled slots", disabledSlots);
+  }, [disabledSlots]);
 
   const selectSlot = (e) => {
     setActiveSlot(e.target.value);
@@ -180,22 +229,22 @@ const BookApptimeSlots = ({ lawyer }) => {
   };
 
   return (
-    <div className="BookAppTimeSlots">
-      <div className="date__selector__container">
+    <div className={styles.BookAppTimeSlots}>
+      <div className={styles.date__selector__container}>
         <lable>Select Date</lable>
         <DatePicker selected={date} onChange={(date) => setDate(date)} />
       </div>
-      <div className="time__selector__container">
+      <div className={styles.time__selector__container}>
         <lable>Select Time</lable>
-        <div className="time__slots">
+        <div className={styles.time__slots}>
           {slots.map((slot, i) => (
             <input
               className={
                 disabledSlots[i] == slot
-                  ? "slot disabled"
+                  ? `${styles.slot} ${styles.disabled}`
                   : activeSlot == slot
-                  ? "slot active"
-                  : "slot"
+                  ? `${styles.slot} ${styles.active}`
+                  : `${styles.slot}`
               }
               value={slot}
               onClick={(e) => {
@@ -214,7 +263,7 @@ const BookApptimeSlots = ({ lawyer }) => {
         <BookAppointmentModal
           date={date}
           time={time}
-          lawyer={lawyer}
+          expert={expert}
           setShowModal={setShowModal}
           currentUser={currentUser}
         />
@@ -222,14 +271,16 @@ const BookApptimeSlots = ({ lawyer }) => {
     </div>
   );
 };
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 const BookAppointmentModal = ({
   date,
   time,
-  lawyer,
+  expert,
   setShowModal,
   currentUser,
 }) => {
+  const router = useRouter();
   const [errors, setErrors] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -250,24 +301,24 @@ const BookAppointmentModal = ({
         description,
         appointmentDate: date,
         appointmentTime: time,
-        clientId: currentUser?.id,
-        lawyerId: lawyer?._id,
-        client: currentUser,
-        lawyer: lawyer,
+        userId: currentUser?.id,
+        expertId: expert?._id,
+        user: currentUser,
+        expert: expert,
       };
-      bookAppointmentAction(bookAppointmentValues);
+      bookAppointmentAction(bookAppointmentValues, router);
     }
   };
   return (
-    <div className="book__appointment__modal">
+    <div className={styles.book__appointment__modal}>
       <span onClick={() => setShowModal(false)}>
         {/* <HighlightOffIcon /> */}
-        icon hlf
+        <FontAwesomeIcon icon={faXmark} />
       </span>
-      <h1>Appointment with {lawyer?.name}</h1>
+      <h1>Appointment with {expert?.name}</h1>
       <label>Appointment Date: {date?.toLocaleDateString()}</label>
       <label>Appointment Time: {time}</label>
-      <label>Appointment Fee : {lawyer?.appointmentFee}</label>
+      <label>Appointment Fee : ${expert?.minFee}</label>
       <label>Appointment Title</label>
       <input
         type="text"
@@ -276,9 +327,9 @@ const BookAppointmentModal = ({
         required
         onChange={(e) => setTitle(e.target.value)}
       />
-      {errors.title && <p className="error__para">{errors.title}</p>}
+      {errors.title && <p className={styles.error__para}>{errors.title}</p>}
 
-      <label className="label">Appointment Description</label>
+      <label className={styles.label}>Appointment Description</label>
       <input
         type="text"
         defaultValue={description}
@@ -287,14 +338,9 @@ const BookAppointmentModal = ({
         onChange={(e) => setDescription(e.target.value)}
       />
       {errors.description && (
-        <p className="error__para">{errors.description}</p>
+        <p className={styles.error__para}>{errors.description}</p>
       )}
-      <button
-        className="book__appointment__btn"
-        onClick={(e) => bookAppointment(e)}
-      >
-        Book Appointment
-      </button>
+      <button onClick={(e) => bookAppointment(e)}>Book Appointment</button>
     </div>
   );
 };

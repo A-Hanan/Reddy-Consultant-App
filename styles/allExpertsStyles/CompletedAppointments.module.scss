@@ -1,0 +1,24 @@
+@import "../mixin";
+@import "../var";
+.completed__appointments__container {
+  flex: 1;
+  @include flexColumnAndCenter; //   background-color: antiquewhite;
+  align-items: flex-start;
+  @include container;
+  background-color: white;
+  border-left: 1px solid lightgray;
+  margin-left: 280px;
+  > h1 {
+    @include headingTypography(1.6rem);
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: -10px;
+  }
+  padding: 30px;
+
+  h4 {
+    @include headingTypography(1.5rem);
+    padding-left: 40px;
+    margin-top: 20px;
+  }
+}

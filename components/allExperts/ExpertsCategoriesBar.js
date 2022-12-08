@@ -108,6 +108,56 @@ const ExpertsCategoriesBar = () => {
       >
         <p>Speciality Topics</p>
       </div>
+      <h4>Appointments</h4>
+
+      <div
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Ongoing Appointment",
+          });
+          router.push("/ongoing-appointment");
+        }}
+        className={
+          activeCategory == "Ongoing Appointment"
+            ? styles.category__menu__active
+            : styles.category__menu
+        }
+      >
+        <p>Ongoing Appointment</p>
+      </div>
+      <div
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Upcoming Appointments",
+          });
+          router.push("/upcoming-appointments");
+        }}
+        className={
+          activeCategory == "Upcoming Appointments"
+            ? styles.category__menu__active
+            : styles.category__menu
+        }
+      >
+        <p>Upcoming Appointments</p>
+      </div>
+      <div
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Completed Appointments",
+          });
+          router.push("/completed-appointments");
+        }}
+        className={
+          activeCategory == "Completed Appointments"
+            ? styles.category__menu__active
+            : styles.category__menu
+        }
+      >
+        <p>Completed Appointments</p>
+      </div>
     </div>
   );
 };

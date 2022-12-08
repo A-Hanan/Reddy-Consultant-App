@@ -75,7 +75,8 @@ export const loginUser = async (
   console.log("user request at loginUserAction>>> ", user);
   try {
     const response = await api.post("/auth/login", user);
-    const userData = response.data.userData;
+    let userData = response.data.userData;
+    userData = Object.assign(userData, { userType: "user" });
     console.log("userdata at login>>>", userData);
 
     // localStorage.setItem("token", response.data.authtoken);
@@ -87,6 +88,7 @@ export const loginUser = async (
         type: "SET_USER",
         user: userData,
       });
+      localStorage.setItem("consult_pro_user", JSON.stringify(userData));
       Swal.fire("Logged in! ", "success");
       if (fromNavbar) {
         setShowAuthForm(false);
@@ -111,8 +113,52 @@ export const logoutUser = (dispatch) => {
     type: "SET_USER",
     user: {},
   });
+  localStorage.setItem("consult_pro_user", "");
   Swal.fire("Logged Out! ", "success");
 };
+export const loginExpert = async (
+  user,
+  router,
+  dispatch,
+  fromNavbar,
+  setShowAuthForm
+) => {
+  console.log("user request at loginUserAction>>> ", user);
+  try {
+    const response = await api.post("/experts/login", user);
+    let userData = response.data.userData;
+    userData = Object.assign(userData, { userType: "expert" });
+    console.log("userdata at login>>>", userData);
+
+    // localStorage.setItem("token", response.data.authtoken);
+    // dispatch({ type: "USER_LOGIN_SUCCESS", payload: userData });
+    // localStorage.setItem("currentUser", JSON.stringify(userData));
+    // return;
+    // if (userData?.verified) {
+    dispatch({
+      type: "SET_USER",
+      user: userData,
+    });
+    localStorage.setItem("consult_pro_user", JSON.stringify(userData));
+    Swal.fire("Logged in! ", "success");
+    if (fromNavbar) {
+      setShowAuthForm(false);
+    }
+    router.push("/experts");
+    // } else {
+    //   sendVerificationEmail(userData, router);
+    //   // router.push("/verify-your-account/" + userData?.id);
+    // }
+  } catch (error) {
+    console.log("error", error);
+    swalWithBootstrapButtons.fire(
+      "login Unsuccessful!",
+      "incorrect information",
+      "error"
+    );
+  }
+};
+
 /*
 export const getAllUsers = () => async (dispatch) => {
   dispatch({ type: "GET_USERS_REQUEST" });

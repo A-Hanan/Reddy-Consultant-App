@@ -18,6 +18,13 @@ const home = () => {
       searchExpertText: "",
     });
   }, []);
+  useEffect(() => {
+    let User = JSON.parse(localStorage?.getItem("consult_pro_user"));
+    dispatch({
+      type: "SET_USER",
+      user: User ? User : null,
+    });
+  }, []);
   return (
     <div>
       <Navbar />

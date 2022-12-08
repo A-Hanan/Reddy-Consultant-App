@@ -1,0 +1,31 @@
+.completed__appointments__container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 20px;
+  background-color: white;
+  border-left: 1px solid lightgray;
+  margin-left: 280px;
+  padding: 30px;
+}
+.completed__appointments__container > h1 {
+  font-size: 1.6rem;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  font-weight: 400;
+  margin-bottom: 30px;
+  margin-top: -10px;
+}
+.completed__appointments__container h4 {
+  font-size: 1.5rem;
+  color: #000;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  padding-left: 40px;
+  margin-top: 20px;
+}/*# sourceMappingURL=CompletedAppointments.module.css.map */

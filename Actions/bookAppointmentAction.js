@@ -9,25 +9,25 @@ const swalWithBootstrapButtons = Swal.mixin({
   buttonsStyling: false,
 });
 
-export const bookAppointmentAction = async (bookAppointmentValues) => {
-  //console.log("at action=>", bookAppointmentValues);
+export const bookAppointmentAction = async (bookAppointmentValues, router) => {
+  console.log("appointment values at action=>", bookAppointmentValues);
   let response;
   await api
-    .post("/appointment/", bookAppointmentValues)
+    .post("/appointment", bookAppointmentValues)
     .then((res) => {
       console.log("res of booking appointment>", res);
       response = res;
       Swal.fire("Booked Successfully!", "", "success");
-      api
-        .post("/notifications", {
-          receiverId: bookAppointmentValues.lawyerId,
-          text: `${bookAppointmentValues.client.name} booked an apppointment with you. Status is pending`,
-        })
-        .then((res) => {
-          console.log("response from posting notifications", res.data);
-        })
-        .catch((err) => console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrrr", err));
-      window.location.href = "/dashboard/pending__appointments";
+      // api
+      //   .post("/notifications", {
+      //     receiverId: bookAppointmentValues.lawyerId,
+      //     text: `${bookAppointmentValues.client.name} booked an apppointment with you. Status is pending`,
+      //   })
+      //   .then((res) => {
+      //     console.log("response from posting notifications", res.data);
+      //   })
+      //   .catch((err) => console.log("errorrrrrrrrrrrrrrrrrrrrrrrrrrr", err));
+      router.push("/upcoming-appointments");
     })
     .catch((err) => {
       console.log("error while booking appointment", err);

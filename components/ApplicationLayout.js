@@ -2,8 +2,17 @@
 import ExpertsCategoriesBar from "./allExperts/ExpertsCategoriesBar";
 import React, { useState, useEffect } from "react";
 import Navbar from "./home/Navbar";
+import { useStateValue } from "../StateProvider";
 
 export default function ApplicationLayout({ children }) {
+  const [{ activeCategory }, dispatch] = useStateValue();
+  useEffect(() => {
+    let User = JSON.parse(localStorage?.getItem("consult_pro_user"));
+    dispatch({
+      type: "SET_USER",
+      user: User ? User : null,
+    });
+  }, []);
   return (
     <div>
       <Navbar />

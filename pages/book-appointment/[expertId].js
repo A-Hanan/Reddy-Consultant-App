@@ -31,15 +31,18 @@ const BookAppointment3 = () => {
   const [ratingCount, setRatingCount] = useState(0);
 
   useEffect(() => {
-    console.log("router query", router.query);
-    console.log("expertId", expertId);
-    api
-      .get(`/experts/getExpertById/${expertId}`)
-      .then((res) => {
-        setExpert(res.data);
-        console.log("expert", res.data);
-      })
-      .catch((error) => console.error(error));
+    // console.log("router query", router.query);
+    // console.log("expertId", expertId);
+    if (router.isReady) {
+      api
+        .get(`/experts/getExpertById/${expertId}`)
+        .then((res) => {
+          setExpert(res.data);
+          // console.log("expert", res.data);
+        })
+        .catch((error) => console.error(error));
+    }
+
     //setting reviews
     // api
     //   .get(`/review/all-reviews/${expertId}`)
@@ -62,9 +65,9 @@ const BookAppointment3 = () => {
     //     }
     //   })
     //   .catch((err) => console.log(err.message));
-  }, []);
+  }, [router.isReady]);
   useEffect(() => {
-    console.log("expert>>> ", expert);
+    // console.log("expert>>> ", expert);
   }, [expert]);
   return (
     <ApplicationLayout>

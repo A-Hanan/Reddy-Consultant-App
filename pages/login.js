@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/LoginStyles/Login.module.css";
 import AES from "crypto-js/aes";
 
-import { loginUser } from "../Actions/userActions";
+import { loginUser, loginExpert } from "../Actions/userActions";
 import { registerUser } from "../Actions/userActions";
 import { useStateValue } from "../StateProvider";
 import { useRouter } from "next/router";
+import api from "../utils/api";
 
 const Login = ({ setShowAuthForm, fromNavbar }) => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [userType, setUserType] = useState("user");
 
   const [errors, setErrors] = useState({});
   const changeForm = () => {
@@ -64,7 +66,11 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
           email,
           password,
         };
-        loginUser(userData, router, dispatch, fromNavbar, setShowAuthForm);
+        if (userType == "expert") {
+          alert("login as expert");
+          loginExpert(userData, router, dispatch, fromNavbar, setShowAuthForm);
+        } else
+          loginUser(userData, router, dispatch, fromNavbar, setShowAuthForm);
       }
       if (formType == "signUp") {
         console.log(
@@ -158,6 +164,16 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
           {errors?.email && (
             <p className={styles.error__para}>{errors?.email}</p>
           )}
+          {/* <div className={styles.show__password__container}>
+            <input
+              type="checkbox"
+              onChange={() =>
+                setUserType(userType == "user" ? "expert" : "user")
+              }
+              checked={userType == "expert"}
+            />
+            <p>Login as Expert</p>
+          </div> */}
           <input
             type={showLoginPassword ? "text" : "password"}
             placeholder="Enter password"
@@ -184,7 +200,9 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
             <input
               type="checkbox"
               onChange={() => setShowLoginPassword(!showLoginPassword)}
+              // checked={showLoginPassword}
             />
+
             <p>Show Password</p>
           </div>
 
