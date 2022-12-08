@@ -6,8 +6,10 @@ import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import { faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Carousel from "better-react-carousel";
+import { useRouter } from "next/router";
 
 const Testimonial = () => {
+  const router = useRouter();
   return (
     <div className={styles.testimonials__part__wrapper}>
       <div className={styles.testimonials__boxes}>
@@ -117,7 +119,10 @@ const Testimonial = () => {
           <div>
             <h1> Consultant Pro</h1>
             <p> Video Consultations with Top Experts in USD 20 </p>
-            <button className={styles.user__option__button__one}>
+            <button
+              className={styles.user__option__button__one}
+              onClick={() => router.push("/experts")}
+            >
               Book Appointment
             </button>
           </div>

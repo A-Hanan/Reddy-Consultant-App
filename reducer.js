@@ -2,6 +2,8 @@ export const initialState = {
   basket: [],
   user: null,
   amazonItems: [],
+  activeCategory: "All",
+  searchExpertText: "",
 };
 
 //Selector
@@ -44,6 +46,16 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+    case "SET_ACTIVE_CATEGORY":
+      return {
+        ...state,
+        activeCategory: action.activeCategory,
+      };
+    case "SET_SEARCH_EXPERT_TEXT":
+      return {
+        ...state,
+        searchExpertText: action.searchExpertText,
       };
     case "EDIT_AMAZON_ITEMS":
       return {

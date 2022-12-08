@@ -1,19 +1,15 @@
-import React from "react";
-import Navbar from "../components/home/Navbar";
+import React, { useState, useEffect } from "react";
+// import Navbar from "../components/home/Navbar";
 import ExpertsCategoriesBar from "../components/allExperts/ExpertsCategoriesBar";
 import ExpertsContainer from "../components/allExperts/ExpertsContainer";
+import ApplicationLayout from "../components/ApplicationLayout";
 
 const experts = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
   return (
-    <div>
-      <Navbar />
-      <div className="all__experts__page">
-        <div className="wrapper">
-          <ExpertsCategoriesBar />
-          <ExpertsContainer />
-        </div>
-      </div>
-    </div>
+    <ApplicationLayout>
+      <ExpertsContainer activeCategory={activeCategory} />
+    </ApplicationLayout>
   );
 };
 

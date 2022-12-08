@@ -1,0 +1,82 @@
+@import "../mixin";
+@import "../var";
+.book__appointment__container {
+  flex: 1;
+  @include flexColumnAndCenter; //   background-color: antiquewhite;
+  align-items: flex-start;
+  @include container;
+  background-color: white;
+  border-left: 1px solid lightgray;
+  margin-left: 280px;
+  > h1 {
+    @include headingTypography(1.6rem);
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: -10px;
+  }
+  padding: 30px;
+
+  h4 {
+    @include headingTypography(1.5rem);
+    padding-left: 40px;
+    margin-top: 20px;
+  }
+}
+
+.basic__expert__info {
+  width: 100%;
+  padding: 20px;
+  padding-left: 40px;
+  display: grid;
+  grid-template-columns: 30% 50%;
+  > div {
+  }
+  h1 {
+    @include headingTypography(1.3rem);
+    margin-top: 10px;
+    span {
+      margin-top: 10px;
+    }
+  }
+  p {
+    @include paraTypography(1rem);
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+}
+.footer__of__expert__basic__info {
+  div {
+    margin-top: 10px;
+    h6 {
+      @include headingTypography(1.2rem);
+    }
+    p {
+      @include paraTypography(1rem);
+      font-weight: 500;
+    }
+  }
+}
+.image__box {
+  // border: 2px solid $yellowishColor;
+
+  border-radius: 50%;
+  background-color: aliceblue;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 40px;
+  height: 40px; //   background: url("/images/manFace.jpg");
+  //   @include backgroundImageProps;
+  @include flexColumnAndCenter;
+  h5 {
+    text-align: center;
+    @include headingTypography(1.6rem);
+    color: $grayishBlack;
+  }
+}
+.image__of__expert {
+  width: auto;
+  height: 100%;
+  //   border-radius: 50%;
+  //   @include placeitCenter;
+  //   border: 3px solid $yellowishColor;
+}

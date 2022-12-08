@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/homeStyles/HeroSection.module.css";
 import Image from "next/image";
+import { useStateValue } from "../../StateProvider";
+import { useRouter } from "next/router";
 
 const HeroContainer = () => {
+  const router = useRouter();
+  const [{ activeCategory }, dispatch] = useStateValue();
+  const [searchText, setSearchText] = useState("");
+  const submitSearch = () => {
+    console.log("search text", searchText);
+    if (searchText?.length > 0) {
+      dispatch({
+        type: "SET_SEARCH_EXPERT_TEXT",
+        searchExpertText: searchText,
+      });
+      router.push("/experts");
+    }
+
+    setSearchText("");
+  };
+
   const [subheaderText, setSubheaderText] = useState(
     "15 thousand+ users served"
   );
@@ -34,8 +52,15 @@ const HeroContainer = () => {
           <input
             placeholder="Search for experts in different fields by name or category"
             type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+            value={searchText}
+            onKeyDown={(e) => {
+              if (event.keyCode == 13) {
+                submitSearch();
+              }
+            }}
           />
-          <button>Search</button>
+          <button onClick={() => submitSearch()}>Search</button>
         </div>
         <h3>{subheaderText}</h3>
       </div>

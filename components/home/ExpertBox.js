@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../../styles/homeStyles/TopRatedExperts.module.css";
 import Image from "next/image";
 
-const ExpertBox = () => {
+const ExpertBox = ({ expert }) => {
   // console.log("image", manFace);
   return (
     <div className={styles.ExpertBox}>

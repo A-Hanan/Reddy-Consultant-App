@@ -132,4 +132,13 @@
 .contact__us__form > button:active {
   color: #ff9e15;
   background-color: white;
+}
+
+.error__para {
+  color: #46484b;
+  font-size: 0.75rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-weight: 500;
+  color: red;
 }/*# sourceMappingURL=LookingForMore.module.css.map */

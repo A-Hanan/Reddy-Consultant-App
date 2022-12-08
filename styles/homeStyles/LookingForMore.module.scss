@@ -91,3 +91,8 @@
     }
   }
 }
+.error__para {
+  @include paraTypography(0.75rem);
+  font-weight: 500;
+  color: red;
+}

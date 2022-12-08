@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/allExpertsStyles/ExpertsCategoriesBar.module.css";
-
+import { useStateValue } from "../../StateProvider";
+import { useRouter } from "next/router";
 const ExpertsCategoriesBar = () => {
-  const [activeCategory, setActiveCategory] = useState("category1");
+  const router = useRouter();
+  const [{ activeCategory }, dispatch] = useStateValue();
+
   return (
     <div className={styles.category__bar__wrapper}>
       <div
-        onClick={() => setActiveCategory("category1")}
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "All",
+          });
+          dispatch({
+            type: "SET_SEARCH_EXPERT_TEXT",
+            searchExpertText: "",
+          });
+          router.push("/experts");
+        }}
         className={
-          activeCategory == "category1"
+          activeCategory == "All"
             ? styles.category__menu__active
             : styles.category__menu
         }
@@ -17,7 +30,17 @@ const ExpertsCategoriesBar = () => {
       </div>
       <h4>Categories</h4>
       <div
-        onClick={() => setActiveCategory("Consulting")}
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Consulting",
+          });
+          dispatch({
+            type: "SET_SEARCH_EXPERT_TEXT",
+            searchExpertText: "",
+          });
+          router.push("/experts");
+        }}
         className={
           activeCategory == "Consulting"
             ? styles.category__menu__active
@@ -27,64 +50,63 @@ const ExpertsCategoriesBar = () => {
         <p>Consulting</p>
       </div>
       <div
-        onClick={() => setActiveCategory("VisaAndGreenCard")}
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "O1 Visa And EB GreenCard",
+          });
+          dispatch({
+            type: "SET_SEARCH_EXPERT_TEXT",
+            searchExpertText: "",
+          });
+        }}
         className={
-          activeCategory == "VisaAndGreenCard"
+          activeCategory == "O1 Visa And EB GreenCard"
             ? styles.category__menu__active
             : styles.category__menu
         }
       >
-        <p>VisaAndGreenCardr</p>
+        <p>O1 Visa And EB GreenCard</p>
       </div>
       <div
-        onClick={() => setActiveCategory("category4")}
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Resumes And Interviews",
+          });
+          dispatch({
+            type: "SET_SEARCH_EXPERT_TEXT",
+            searchExpertText: "",
+          });
+          router.push("/experts");
+        }}
         className={
-          activeCategory == "category4"
+          activeCategory == "Resumes And Interviews"
             ? styles.category__menu__active
             : styles.category__menu
         }
       >
-        <p>Information Technology</p>
+        <p>Resumes And Interviews</p>
       </div>
       <div
-        onClick={() => setActiveCategory("category5")}
+        onClick={() => {
+          dispatch({
+            type: "SET_ACTIVE_CATEGORY",
+            activeCategory: "Speciality Topics",
+          });
+          dispatch({
+            type: "SET_SEARCH_EXPERT_TEXT",
+            searchExpertText: "",
+          });
+          router.push("/experts");
+        }}
         className={
-          activeCategory == "category5"
+          activeCategory == "Speciality Topics"
             ? styles.category__menu__active
             : styles.category__menu
         }
       >
-        <p>Architecture and Engineering</p>
-      </div>
-      <div
-        onClick={() => setActiveCategory("category6")}
-        className={
-          activeCategory == "category6"
-            ? styles.category__menu__active
-            : styles.category__menu
-        }
-      >
-        <p>Sports and Games</p>
-      </div>
-      <div
-        onClick={() => setActiveCategory("category7")}
-        className={
-          activeCategory == "category7"
-            ? styles.category__menu__active
-            : styles.category__menu
-        }
-      >
-        <p>Arts and Culture</p>
-      </div>
-      <div
-        onClick={() => setActiveCategory("category8")}
-        className={
-          activeCategory == "category8"
-            ? styles.category__menu__active
-            : styles.category__menu
-        }
-      >
-        <p>Education</p>
+        <p>Speciality Topics</p>
       </div>
     </div>
   );

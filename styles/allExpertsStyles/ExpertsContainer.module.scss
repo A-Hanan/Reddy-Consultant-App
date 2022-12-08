@@ -9,8 +9,15 @@
   > h1 {
     @include headingTypography(1.6rem);
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     margin-top: -10px;
+  }
+  > h3 {
+    @include headingTypography(1.1);
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 }
 .search__input__wrapper {

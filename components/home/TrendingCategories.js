@@ -14,34 +14,72 @@ import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { faPassport } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { useStateValue } from "../../StateProvider";
+import { useRouter } from "next/router";
 
 import Link from "next/link";
 
 const TrendingCategories = () => {
+  const router = useRouter();
+  const [{ activeCategory }, dispatch] = useStateValue();
   return (
     <>
       <div className={styles.tc__conatainer}>
         <h1>Trending Categories</h1>
         <div className={styles.categoriesGrid}>
-          <div>
+          <div
+            onClick={() => {
+              dispatch({
+                type: "SET_ACTIVE_CATEGORY",
+                activeCategory: "O1 Visa And EB GreenCard",
+              });
+              router.push("/experts");
+            }}
+          >
             <span>
               <FontAwesomeIcon icon={faPassport} />
             </span>
             <p>O1 Visa and EB Green Card</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              dispatch({
+                type: "SET_ACTIVE_CATEGORY",
+                activeCategory: "Consulting",
+              });
+              router.push("/experts");
+            }}
+          >
             <span>
               <FontAwesomeIcon icon={faUserGroup} />
             </span>
             <p>Consulting</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              dispatch({
+                type: "SET_ACTIVE_CATEGORY",
+                activeCategory: "Resumes And Interviews",
+              });
+              router.push("/experts");
+            }}
+          >
             <span>
               <FontAwesomeIcon icon={faFileLines} />{" "}
             </span>
             <p>Resumes and Interviews</p>
           </div>
-          <div>
+          <div
+            onClick={() => {
+              {
+                dispatch({
+                  type: "SET_ACTIVE_CATEGORY",
+                  activeCategory: "Speciality Topics",
+                });
+                router.push("/experts");
+              }
+            }}
+          >
             <span>
               <FontAwesomeIcon icon={faStar} />
             </span>
