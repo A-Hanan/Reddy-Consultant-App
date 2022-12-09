@@ -127,7 +127,10 @@ export const loginExpert = async (
   try {
     const response = await api.post("/experts/login", user);
     let userData = response.data.userData;
-    userData = Object.assign(userData, { userType: "expert" });
+    userData = Object.assign(userData, {
+      userType: "expert",
+      id: userData?._id,
+    });
     console.log("userdata at login>>>", userData);
 
     // localStorage.setItem("token", response.data.authtoken);
@@ -144,7 +147,7 @@ export const loginExpert = async (
     if (fromNavbar) {
       setShowAuthForm(false);
     }
-    router.push("/experts");
+    router.push("/upcoming-appontments");
     // } else {
     //   sendVerificationEmail(userData, router);
     //   // router.push("/verify-your-account/" + userData?.id);

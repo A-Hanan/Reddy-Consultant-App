@@ -27,7 +27,7 @@ const OngoingAppointment = () => {
   }, []);
   return (
     <ApplicationLayout>
-      <div className={styles.ongoing__appointment__container}>
+      <div className={styles.ongoing__appointment__wrapper}>
         <div className="ongoing__appointment">
           {appointment?._id ? (
             <>

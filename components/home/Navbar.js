@@ -16,7 +16,10 @@ const Navbar = () => {
   return (
     <div className={styles.nav__wrapper}>
       <div>
-        <Link href="/" style={{ textDecoration: "none" }}>
+        <Link
+          href={user?.userType == "expert" ? "/upcoming-appointments" : "/"}
+          style={{ textDecoration: "none" }}
+        >
           <h1 className={styles.nav__logo__text}>
             <span className={styles.yellowText}>Consult</span>
             <span className={styles.blueText}>Pro</span>
@@ -27,7 +30,14 @@ const Navbar = () => {
         {user?.id ? (
           <div className={styles.logout__box}>
             <h5>
-              {user?.firstName} {user?.lastName}
+              {user?.userType == "expert" ? (
+                user?.name
+              ) : (
+                <>
+                  {" "}
+                  {user?.firstName} {user?.lastName}
+                </>
+              )}
             </h5>
             <span onClick={() => logoutUser(dispatch)}>
               <FontAwesomeIcon icon={faRightFromBracket} />

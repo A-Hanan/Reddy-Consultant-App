@@ -22,6 +22,15 @@ const UpcomingAppointments = () => {
   const router = useRouter();
   const [appointments, setAppointments] = useState([]);
   const [{ user }, dispatch] = useStateValue();
+  useEffect(() => {
+    let User = localStorage?.getItem("consult_pro_user")
+      ? JSON.parse(localStorage?.getItem("consult_pro_user"))
+      : null;
+    dispatch({
+      type: "SET_USER",
+      user: User ? User : null,
+    });
+  }, []);
 
   // const userstate = useSelector((state) => state.loginUserReducer);
   // const { user } = userstate;
@@ -102,13 +111,17 @@ const UpcomingAppointments = () => {
                             : "https://www.unhcr.org/innovation/wp-content/uploads/2015/04/gellman.png"
                         }
                       />
-                      <h3>{appointment.expert.name}</h3>
-                      <h5>(Expert)</h5>
-                      {/* <h5>
-                    {user?.userType == "client"
-                      ? "(expert)"
-                      : "(Client)"}
-                  </h5> */}
+                      <h3>
+                        {user?.userType == "user"
+                          ? appointment.expert?.name
+                          : appointment.user?.firstName +
+                            " " +
+                            appointment.user?.lastName}
+                      </h3>
+                      {/* <h5>(Expert)</h5> */}
+                      <h5>
+                        {user?.userType == "user" ? "(Expert)" : "(User)"}
+                      </h5>
                     </div>
                     <div className={styles.appointment__info}>
                       <span className={styles.label}>Appointment Date </span>
@@ -166,7 +179,7 @@ const UpcomingAppointments = () => {
                    
                     </button> */}
                   </div>
-                  {user?.userType === "expert" && (
+                  {/* {user?.userType === "expert" && (
                     <button
                       className={styles.setNow__btn}
                       onClick={(e) => {
@@ -175,7 +188,7 @@ const UpcomingAppointments = () => {
                     >
                       Set Now
                     </button>
-                  )}
+                  )} */}
                 </div>
               ))}
             </>

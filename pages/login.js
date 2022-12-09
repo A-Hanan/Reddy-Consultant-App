@@ -7,6 +7,8 @@ import { registerUser } from "../Actions/userActions";
 import { useStateValue } from "../StateProvider";
 import { useRouter } from "next/router";
 import api from "../utils/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = ({ setShowAuthForm, fromNavbar }) => {
   const router = useRouter();
@@ -18,6 +20,9 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const handleForgetPasswordChange = () => {
+    setShowLoginPassword(!showLoginPassword);
+  };
   const [userType, setUserType] = useState("user");
 
   const [errors, setErrors] = useState({});
@@ -67,7 +72,7 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
           password,
         };
         if (userType == "expert") {
-          alert("login as expert");
+          // alert("login as expert");
           loginExpert(userData, router, dispatch, fromNavbar, setShowAuthForm);
         } else
           loginUser(userData, router, dispatch, fromNavbar, setShowAuthForm);
@@ -197,23 +202,42 @@ const Login = ({ setShowAuthForm, fromNavbar }) => {
             <p className={styles.error__para}>{errors?.confirmPassword}</p>
           )}
           <div className={styles.show__password__container}>
-            <input
-              type="checkbox"
-              onChange={() => setShowLoginPassword(!showLoginPassword)}
-              // checked={showLoginPassword}
-            />
+            <span onClick={handleForgetPasswordChange}>
+              <FontAwesomeIcon icon={showLoginPassword ? faEyeSlash : faEye} />
+            </span>
 
             <p>Show Password</p>
           </div>
+          {formType == "signIn" && (
+            <div className={styles.radio__options__usertype}>
+              <h1>Login as</h1>
+              <div>
+                <div onClick={() => setUserType("user")}>
+                  <input type="radio" checked={userType == "user"} />
+                  <labe>user</labe>
+                </div>
+                <div onClick={() => setUserType("expert")}>
+                  <input type="radio" checked={userType == "expert"} />
+                  <labe>expert</labe>
+                </div>
+              </div>
+              {/* <input
+              type="checkbox"
+              onChange={() =>
+                setUserType(userType == "user" ? "expert" : "user")
+              }
+              checked={userType == "expert"}
+            />
+            <p>Login as Expert</p> */}
+            </div>
+          )}
 
+          <button onClick={() => submitForm()}>Continue</button>
           {formType == "signIn" && (
             <p onClick={() => router.push("/forgot-password")}>
               forget password?
             </p>
           )}
-
-          <button onClick={() => submitForm()}>Continue</button>
-
           <p onClick={() => changeForm()}>
             {" "}
             {formType == "signIn"

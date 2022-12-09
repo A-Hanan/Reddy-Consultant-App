@@ -76,6 +76,26 @@
     }
   }
 }
+.radio__options__usertype {
+  display: flex;
+  flex-direction: column;
+  > h1 {
+    @include headingTypography(1rem);
+    margin-bottom: 6px;
+  }
+  > div {
+    display: flex;
+    gap: 30px;
+    > div {
+      cursor: pointer;
+      display: flex;
+      gap: 10px;
+      > p {
+        @include paraTypography(0.9rem);
+      }
+    }
+  }
+}
 .error__para {
   @include paraTypography(0.7rem);
   font-size: 0.7rem;

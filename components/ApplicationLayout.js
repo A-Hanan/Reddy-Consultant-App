@@ -1,18 +1,29 @@
 // import Navbar from "../components/home/Navbar";
 import ExpertsCategoriesBar from "./allExperts/ExpertsCategoriesBar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "./home/Navbar";
 import { useStateValue } from "../StateProvider";
+import { SocketContext } from "../SocketContext";
 
 export default function ApplicationLayout({ children }) {
   const [{ activeCategory }, dispatch] = useStateValue();
+  const { addUser, me, callEnded, leaveCall, setMe } =
+    useContext(SocketContext);
   useEffect(() => {
-    let User = JSON.parse(localStorage?.getItem("consult_pro_user"));
+    let User = localStorage?.getItem("consult_pro_user")
+      ? JSON.parse(localStorage?.getItem("consult_pro_user"))
+      : null;
     dispatch({
       type: "SET_USER",
       user: User ? User : null,
     });
+    addUser(User?.id);
   }, []);
+  // useEffect(() => {
+  //   //adding socket user
+  //   console.log("me>>>>>>>>>>> ", me);
+  //   addUser(user?.id);
+  // }, [user]);
   return (
     <div>
       <Navbar />

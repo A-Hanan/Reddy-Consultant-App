@@ -9,9 +9,10 @@ import GuideForBooking from "../components/home/GuideForBooking";
 import Footer from "../components/home/Footer";
 import Testimonial from "../components/home/Testimonial";
 import { useStateValue } from "../StateProvider";
-
+import { useRouter } from "next/router";
 const home = () => {
-  const [{ activeCategory }, dispatch] = useStateValue();
+  const router = useRouter();
+  const [{ activeCategory, user }, dispatch] = useStateValue();
   useEffect(() => {
     dispatch({
       type: "SET_SEARCH_EXPERT_TEXT",
@@ -19,11 +20,16 @@ const home = () => {
     });
   }, []);
   useEffect(() => {
-    let User = JSON.parse(localStorage?.getItem("consult_pro_user"));
+    let User = localStorage?.getItem("consult_pro_user")
+      ? JSON.parse(localStorage?.getItem("consult_pro_user"))
+      : null;
     dispatch({
       type: "SET_USER",
       user: User ? User : null,
     });
+    if (User?.userType == "expert") {
+      router.push("/upcoming-appointments");
+    }
   }, []);
   return (
     <div>

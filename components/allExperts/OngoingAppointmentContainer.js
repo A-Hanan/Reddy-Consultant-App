@@ -2,67 +2,80 @@ import React, { useState, useEffect } from "react";
 import { useStateValue } from "../../StateProvider";
 // import { Link } from "react-router-dom";
 // import VideocamIcon from "@mui/icons-material/Videocam";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCameraWeb } from "@fortawesome/free-solid-svg-icons";
+import styles from "../../styles/allExpertsStyles/OngoingAppointment.module.css";
 
 const OngoingAppointmentContainer = ({ appointment }) => {
   const [{ user }, dispatch] = useStateValue();
   return (
     <>
-      <div className="ongoing__appointment__container">
-        <div className="user__info">
+      <div className={styles.ongoing__appointment__container}>
+        <div className={styles.user__info}>
           <img
-            className="user__profile__img"
+            className={styles.user__profile__img}
             src={
-              user.userType === "lawyer"
-                ? appointment.client.profile
-                  ? appointment.client.profile
-                  : "https://www.unhcr.org/innovation/wp-content/uploads/2015/04/gellman.png"
-                : appointment.lawyer.profile
+              user.userType === "user"
+                ? "https://www.unhcr.org/innovation/wp-content/uploads/2015/04/gellman.png"
+                : appointment.expert.profile
+                ? appointment.expert.profile
+                : "https://www.unhcr.org/innovation/wp-content/uploads/2015/04/gellman.png"
             }
           />
-          <h1>{user.userType === "lawyer" ? "Client" : "Lawyer"}</h1>
-          <div className="user__name">
+          <h1>{user.userType === "expert" ? "Client" : "Expert"}</h1>
+          <div className={styles.user__name}>
             {/* <span>Name: </span> */}
             <span>
-              {user.userType === "lawyer"
-                ? appointment.client.name
-                : appointment.lawyer.name}
+              {user.userType === "expert"
+                ? appointment.user?.firstName + " " + appointment.user?.lastName
+                : appointment.expert?.name}
             </span>
           </div>
-          <div className="user__name">
+          <div className={styles.user__name}>
             {/* <span>Email: </span> */}
             <span>
-              {user.userType === "lawyer"
-                ? appointment.client.email
-                : appointment.lawyer.email}
+              {user.userType === "expert"
+                ? appointment.user?.email
+                : appointment.expert?.email}
             </span>
           </div>
         </div>
-        <div className="video__call__settings">
-          <div className="appointment__details">
+        <div className={styles.video__call__settings}>
+          <div className={styles.appointment__details}>
             <h1>Appointment Details</h1>
-            <div className="appointment__title">
-              <span className="label">Title: </span>
-              <span className="text">{appointment.title}</span>
+            <div className={styles.appointment__title}>
+              <span className={styles.label}>Title: </span>
+              <span className={styles.text}>{appointment.title}</span>
             </div>
-            <div className="appointment__title">
-              <span className="label">description: </span>
-              <span className="text">{appointment.description}</span>
+            <div className={styles.appointment__title}>
+              <span className={styles.label}>description: </span>
+              <span className={styles.text}>{appointment.description}</span>
             </div>
           </div>
-          <Link
-            className="start__video__btn"
+          <div
+            className={styles.join__meeting__btn}
             onClick={() => {
               window.location.href = `/video-chat/${appointment._id}`;
             }}
-            to="#"
           >
-            {/* <CallIcon />
+            <FontAwesomeIcon icon={faCameraWeb} />
+            Join Meeting
+          </div>
+          {/* <Link
+            className={styles.start__video__btn"
+            onClick={() => {
+              window.location.href = `/video-chat/${appointment._id}`;
+            }}
+            href="#"
+          > */}
+          {/* <CallIcon />
           {user.userRole === "1" ? "Call the Doctor " : " Call the Patient"} */}
-            {/* <VideocamIcon /> */}
-            Join
-          </Link>
+          {/* <VideocamIcon /> */}
+          {/* Join
+          </Link> */}
           {/* <button
-          className="start__video__btn"
+          className={styles.start__video__btn"
           onClick={() => setShowVideoBox(true)}
         >
           <CallIcon />
@@ -70,7 +83,7 @@ const OngoingAppointmentContainer = ({ appointment }) => {
         </button> */}
           {/* {callAccepted && !callEnded ? (
           <button
-            className="start__video__btn"
+            className={styles.start__video__btn"
             variant="contained"
             color="secondary"
             fullWidth
@@ -80,7 +93,7 @@ const OngoingAppointmentContainer = ({ appointment }) => {
           </button>
         ) : (
           <button
-            className="start__video__btn"
+            className={styles.start__video__btn"
             variant="contained"
             color="primary"
             fullWidth
@@ -98,7 +111,7 @@ const OngoingAppointmentContainer = ({ appointment }) => {
           <Notifications />
         </Sidebar>
         {showVideoBox && (
-          // <div className="video-chat-container">
+          // <div className={styles.video-chat-container">
           // <div>
           //   <CancelIcon onClick={() => setShowVideoBox(false)} />
           <VideoPlayer />

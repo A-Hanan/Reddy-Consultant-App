@@ -20,7 +20,7 @@ export const getUpcomingAppointments = async (user) => {
   console.log("user at action=>", user);
   let response;
   await api
-    .get(`/appointment/upcoming/${"user"}/${user?.id}`)
+    .get(`/appointment/upcoming/${user?.userType}/${user?.id}`)
     .then((res) => {
       console.log("upcoming appointments>", res);
       response = res.data;
