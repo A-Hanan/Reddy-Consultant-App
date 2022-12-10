@@ -3,6 +3,7 @@ import styles from "../../styles/homeStyles/HeroSection.module.css";
 import Image from "next/image";
 import { useStateValue } from "../../StateProvider";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const HeroContainer = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const HeroContainer = () => {
         type: "SET_SEARCH_EXPERT_TEXT",
         searchExpertText: searchText,
       });
-      router.push("/experts");
+      // router.push("/experts");
     }
 
     setSearchText("");
@@ -60,7 +61,16 @@ const HeroContainer = () => {
               }
             }}
           />
-          <button onClick={() => submitSearch()}>Search</button>
+
+          <button onClick={() => submitSearch()}>
+            {" "}
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              href="/experts"
+            >
+              Search{" "}
+            </Link>
+          </button>
         </div>
         <h3>{subheaderText}</h3>
       </div>

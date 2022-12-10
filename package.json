@@ -27,7 +27,8 @@
     "simple-peer": "^9.11.1",
     "socket.io-client": "^4.5.4",
     "sweetalert2": "^11.6.15",
-    "timeago.js": "^4.0.2"
+    "timeago.js": "^4.0.2",
+    "web-audio-daw": "^4.13.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

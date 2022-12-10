@@ -147,7 +147,7 @@ export const loginExpert = async (
     if (fromNavbar) {
       setShowAuthForm(false);
     }
-    router.push("/upcoming-appontments");
+    router.push("/upcoming-appointments");
     // } else {
     //   sendVerificationEmail(userData, router);
     //   // router.push("/verify-your-account/" + userData?.id);

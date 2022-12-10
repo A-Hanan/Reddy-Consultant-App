@@ -67,14 +67,18 @@ const ContextProvider = ({ children }) => {
     socket.emit("addUser", id);
     // console.log("after socketContext");
   };
-  const answerCall = () => {
+  const answerCall = (receiverId) => {
     setCallAccepted(true);
     console.log("accepting answer call");
 
     const peer = new Peer({ initiator: false, trickle: false, stream });
 
     peer.on("signal", (data) => {
-      socket.emit("answerCall", { signal: data, to: call.from });
+      socket.emit("answerCall", {
+        signal: data,
+        to: call.from,
+        receiverId: receiverId,
+      });
       console.log("emitting answer call", data, call.from);
     });
 

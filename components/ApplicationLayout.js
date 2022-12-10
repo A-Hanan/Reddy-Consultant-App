@@ -17,7 +17,7 @@ export default function ApplicationLayout({ children }) {
       type: "SET_USER",
       user: User ? User : null,
     });
-    addUser(User?.id);
+    User && addUser(User?.id);
   }, []);
   // useEffect(() => {
   //   //adding socket user

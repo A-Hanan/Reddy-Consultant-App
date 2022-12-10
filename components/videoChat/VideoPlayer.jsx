@@ -4,7 +4,7 @@ import { SocketContext } from "../../SocketContext";
 //import React, { useContext } from 'react';
 
 //import { SocketContext } from '../Context';
-
+import styles from "../../styles/VideoChat/VideoChat.module.css";
 const VideoPlayer = () => {
   const { name, callAccepted, myVideo, userVideo, callEnded, stream, call } =
     useContext(SocketContext);
@@ -25,15 +25,15 @@ const VideoPlayer = () => {
     console.log("user video", userVideo);
   }, [callAccepted, userVideo]);
   return (
-    <div className="video__call__videoplayer__container">
+    <div className={styles.video__call__videoplayer__container}>
       {stream && (
-        <div className="screen self">
+        <div className={styles.self__screen}>
           <video playsInline muted ref={myVideo} autoPlay />
           <h5>{name || "Name"}</h5>
         </div>
       )}
       {callAccepted && !callEnded && (
-        <div className="screen">
+        <div className={styles.screen}>
           <video playsInline ref={userVideo} autoPlay />
           <h5>{call.name || "Name"}</h5>
         </div>

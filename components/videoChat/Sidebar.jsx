@@ -3,12 +3,17 @@ import { SocketContext } from "../../SocketContext";
 import Swal from "sweetalert2";
 import { Phone, PhoneDisabled } from "@mui/icons-material";
 import PhoneIcon from "@mui/icons-material/Phone";
+import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
+import MicOffIcon from "@mui/icons-material/MicOff";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
+import NoPhotographyIcon from "@mui/icons-material/NoPhotography";
 import { useRouter } from "next/router";
 
 import axios from "axios";
 // import { useDispatch, useSelector } from "react-redux";
 import { useStateValue } from "../../StateProvider";
 import api from "../../utils/api";
+import styles from "../../styles/VideoChat/VideoChat.module.css";
 
 const Sidebar = ({
   children,
@@ -16,6 +21,7 @@ const Sidebar = ({
   receiverName,
   receiverType,
   appointmentId,
+  user,
 }) => {
   const {
     me,
@@ -32,16 +38,16 @@ const Sidebar = ({
 
   // const userstate = useSelector((state) => state.loginUserReducer);
   // const { currentUser } = userstate;
-  const [{ user }, dispatch] = useStateValue();
-  useEffect(() => {
-    let User = localStorage?.getItem("consult_pro_user")
-      ? JSON.parse(localStorage?.getItem("consult_pro_user"))
-      : null;
-    dispatch({
-      type: "SET_USER",
-      user: User ? User : null,
-    });
-  }, []);
+  // const [{ user }, dispatch] = useStateValue();
+  // useEffect(() => {
+  //   let User = localStorage?.getItem("consult_pro_user")
+  //     ? JSON.parse(localStorage?.getItem("consult_pro_user"))
+  //     : null;
+  //   dispatch({
+  //     type: "SET_USER",
+  //     user: User ? User : null,
+  //   });
+  // }, []);
 
   useEffect(() => {
     const setAndRun = () => {
@@ -120,27 +126,35 @@ const Sidebar = ({
   }, [callEnded]);
 
   return (
-    <div className="video__call__options__container">
-      <div className="video__call__options__container__buttons">
+    <div className={styles.video__call__options__container}>
+      <div className={styles.video__call__options__container__buttons}>
         {!callEnded && (
           <>
+            <button className={styles.startCall__btn}>
+              <KeyboardVoiceIcon />
+              {/* Hang Up */}
+            </button>
+            <button className={styles.startCall__btn}>
+              <PhotoCameraIcon />
+              {/* Hang Up */}
+            </button>
             {callAccepted ? (
               <button
                 onClick={() => leaveCall(receiverId)}
-                className="endCall__btn"
+                className={styles.endCall__btn}
               >
-                <PhoneDisabled fontSize="large" />
-                Hang Up
+                <PhoneDisabled />
+                {/* Hang Up */}
               </button>
             ) : (
               <button
                 onClick={() => callUser(idToCall)}
-                className="startCall__btn"
+                className={styles.startCall__btn}
               >
+                {/* {user?.userType !== "expert"
+                  ? "Invite Expert"
+                  : "Invite your client"} */}
                 <PhoneIcon />
-                {receiverType === "lawyer"
-                  ? "Call the Lawyer"
-                  : "Call the Client"}
               </button>
             )}
           </>

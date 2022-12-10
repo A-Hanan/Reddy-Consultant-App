@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../styles/allExpertsStyles/ExpertBox.module.css";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const ExpertBox = ({ expert }) => {
   const router = useRouter();
@@ -28,9 +29,13 @@ const ExpertBox = ({ expert }) => {
 
       <p>${expert?.minFee}/min</p>
       <p>{expert?.category}</p>
-      <button onClick={() => router.push("/book-appointment/" + expert?._id)}>
-        Book Now
-      </button>
+      <Link href={"/book-appointment/" + expert?._id}>
+        <button
+        // onClick={() => router.push("/book-appointment/" + expert?._id)}
+        >
+          Book Now
+        </button>
+      </Link>
       <div className={styles.footer__of__expert__box}>
         <div>
           <h6>76</h6>

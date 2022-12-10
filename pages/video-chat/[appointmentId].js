@@ -10,6 +10,7 @@ import { SocketContext } from "../../SocketContext";
 import { useStateValue } from "../../StateProvider";
 import api from "../../utils/api";
 // import { useDispatch, useSelector } from "react-redux";
+import styles from "../../styles/VideoChat/VideoChat.module.css";
 
 const VideoCall = () => {
   const [{ user }, dispatch] = useStateValue();
@@ -74,18 +75,19 @@ const VideoCall = () => {
   }, [receiver]);
 
   return (
-    <div className="video__call__container">
+    <div className={styles.video__call__container}>
       {/* <div className="video__call__navbar">
         <h3>Discuss your health face to face .</h3>
       </div> */}
-      <VideoPlayer />
+      <VideoPlayer user={user} />
       <Sidebar
         receiverId={receiverId}
         receiverName={receiver?.name}
         receiverType={receiver?.userType}
         appointmentId={appointmentId}
+        user={user}
       ></Sidebar>
-      <Notifications />
+      <Notifications receiverId={receiverId} user={user} />
     </div>
   );
 };
